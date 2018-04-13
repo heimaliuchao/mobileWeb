@@ -44,6 +44,7 @@ function checkForm(params) {
 
 //  发送 axios 模块
  function login(params) {
+    // 这里直接return 的是 axios 的请求方法 不需要写promise  因为直接支持promise 内部返回的就是promise对象
    return axios.post('login',params);
  }
 
@@ -75,17 +76,19 @@ function check(data) {
     .then(login)
     .then(check)
     .then(function() {
-        // 成功时候的回调函数 进行后续的业务代码
+        // 成功时候的回调函数 进行后续的业务代码i
         location.href = "/index.html"; 
     })
     .catch(function(err) {
         $.toast(err);
-    })   })
+    }) 
+
+  })
 
 // 页面初始化完成后触发该事件
  $(document).on("pageInit", function(e,pageId,$page) {
     // 从本地缓存中取出用户信息，显示到输入框
-    let info = localStorage.getItem('userInfo');
+    let info = localStorage.getItem('userinfo');
     let uname = JSON.parse(info).username;
     $("#mobile").val(uname);
 
