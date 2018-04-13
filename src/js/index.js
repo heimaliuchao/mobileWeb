@@ -32,7 +32,9 @@ $(function() {
       // 如果需要分页器
       pagination: {
         el: '.swiper-pagination',
-      }
+        
+      },
+      autoplay : true
     })
   }   
 
@@ -49,7 +51,24 @@ function renderCategories(data) {
           $('#menuInfo').html(tpl);*/
           renderData('categoriesTpl','#menuInfo',data);
            resolve();
-          
+  });
+}
+
+
+// -----------------------------------------------------------
+
+
+// 商品
+function menuAxios() {
+  return axios.get('home/goodslist');
+}
+function renderMenu(params) {
+  return new Promise(function(resolve, reject) {
+
+      let tpl = template('menuTpl', params.data);
+
+          $('#listInfo').html(tpl); 
+           resolve();
 
   });
 }
@@ -65,10 +84,13 @@ function renderCategories(data) {
     .then(renderCategories)
     .catch(function() {
       $.toast('error');
-    })
-
-
-
+    });
+    // 商品详情
+    menuAxios()
+    .then(renderMenu)
+    .catch(function() {
+      $.toast('error');
+    });
  });
   $.init();
 
