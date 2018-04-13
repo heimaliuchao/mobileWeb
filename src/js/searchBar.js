@@ -1,7 +1,7 @@
 $(function() {
     // 这个 模块为 输入按钮的时候 遮挡层的出现
     // 首先先动态创建一个遮挡层 
-    let mask = $('<div class="mask"><div id="searchInfo"></div></div>');
+    let mask = $('<div class="mask"><div id="searchInfo" class=""></div></div>');
     mask.appendTo('body');
     mask.hide();
 
