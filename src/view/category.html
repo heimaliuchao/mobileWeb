@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  @@include('./common/meta.html')
+  @@include('./common/style.html')
+  <link rel="stylesheet" href="css/category.css">
+    <title>分类</title>
+</head>
+<body>
+  <div class="page-group">
+    <div class="page page-current">
+      <!-- 你的html代码 -->
+      @@include('./common/menubar.html',{
+      "category" : "active"
+    })
+     @@include('./common/topbar.html')
+
+
+     <div class="content native-scroll" id="category_page">
+         <div class="row">
+             <div class="col-25 layout-left" id="leftMenuInfo">
+                 <div class="layout-con"></div>
+             </div>
+             <div class="col-75 layout-right" id="rightContentInfo">
+
+             </div>
+         </div>
+     </div>
+    </div>
+  </div>
+  @@include('./common/script.html')
+  <script src="../js/category.js"></script>
+  <!--layout 左边部分-->
+  <script type="text/template" id="applianceTpl">
+      {{each $data}}
+      <div class="items">{{$value.cat_name}}</div>
+      {{/each}}
+  </script>
+
+  <script type="text/template" id="appTpl">
+      <div class="shangpin">
+            {{each $data.data list}}
+          <div class="goods-cat">
+              <h2 class="theme">
+                  <p>{{list.cat_name}}</p>
+                  <s class="m-line"></s>
+              </h2>          
+                  <div class="comP">
+                     {{each list.children }}
+                    <div class="good" data-cid="{{$value.cat_id}}">
+                        <div style=""><img src="{{$data.baseUrl}}{{$value.cat_icon}}">
+                        </div>
+                        <p>{{$value.cat_name}}</p>
+                    </div>
+                    {{/each}}
+                 </div>        
+          </div>
+          {{/each}}
+      </div>
+  </script>
+
+</body>
+</html>

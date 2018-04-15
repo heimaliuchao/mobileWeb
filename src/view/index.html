@@ -3,13 +3,16 @@
 <head>
   @@include('./common/meta.html')
   @@include('./common/style.html')
+  
+    <title>主页</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
   <div class="page-group">
     <div class="page page-current">
       <!-- 你的html代码 -->
       @@include('./common/menubar.html',{
-      "current" : "active"
+      "index" : "active"
     })
      @@include('./common/topbar.html')
       <div class="content native-scroll" id="content">
@@ -26,6 +29,7 @@
     </div> 
   </div>
   @@include('./common/script.html')
+  <script src="/js/index.js"></script>
   <script type="text/template" id="swiperTpl">
     <!--  动态生成轮播图模块  使用模板 -->
 
@@ -81,7 +85,6 @@
     {{/each}}
 
   </script>
-  
   
 
 </body>
