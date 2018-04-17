@@ -47,6 +47,7 @@ $(function(){
   });
 
   // 滚到底部加载更多内容
+  
   $(document).on('infinite', '.infinite-scroll-bottom', function() {
     if(flag) {
       return;
@@ -66,7 +67,7 @@ $(function(){
       })
       .then(function(total){
         if(pagenum*pagesize >= total){
-          // 加载到最后了，终止加载
+
           // 加载完毕，则注销无限加载事件，以防不必要的加载
           $.detachInfiniteScroll($('.infinite-scroll'));
           // 删除加载提示符
